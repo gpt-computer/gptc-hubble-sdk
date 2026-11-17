@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gptc-hubble-sdk"
+version = "0.10.0"
+description = "SDK for Hubble API at GPT::C0MPUTΞR."
+authors = [{ name = "GPT::C0MPUTΞR", email = "hello@gptc.ai" }]
+license = { text = "Apache 2.0" }
+requires-python = ">=3.7.0"
+dependencies = [
+    "requests",
+    "aiohttp",
+    "rich",
+    "importlib-metadata",
+    "filelock",
+    "pathspec",
+    "docker",
+    "pyyaml",
+    "python-jose",
+]
+
+[project.scripts]
+gptc-auth = "hubble.__main__:main"
+gptc-hub = "hubble.executor.__main__:main"
+docker-credential-gptc-hubble = "hubble.dockerauth:main"
+
+[project.urls]
+Source = "https://github.com/gpt-computer/gptc-hubble-sdk/"
+Tracker = "https://github.com/gpt-computer/gptc-hubble-sdk/issues"
+
+[dependency-groups]
+dev = [
+    "black==22.3.0",
+    "flake8==4.0.1",
+    "isort==5.10.1",
+    "pytest==7.0.0",
+    "pytest-asyncio==0.19.0",
+    "pytest-cov==3.0.0",
+    "pytest-mock==3.7.0",
+    "mock==4.0.3",
+    "pre-commit",
+]
+
+[tool.black]
+line-length = 88
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+src_paths = ["api"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
