@@ -26,5 +26,5 @@ uv pip install gptc-hubble-sdk
 * Authentication and token management.
 * Artifact management.
 
-## [Documentation](https://docs.gptc.ai/gpt-computer-cloud/login/)
+## [Documentation](https://docs.gpt-computer.github.io/gpt-computer-cloud/login/)
 
