@@ -53,7 +53,7 @@ NOTEBOOK_LOGIN_HTML = f"""
             If you don't have a token, press the <b>Browser login</b> button to log in via the browser.
         </p>
         <a
-            href='https://cloud.gptc.ai/settings/tokens'
+            href='https://cloud.gpt-computer.github.io/settings/tokens'
             target='__blank'
             class='link1'>
                 Create

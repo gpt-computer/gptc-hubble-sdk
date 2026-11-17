@@ -618,7 +618,7 @@ metas:
 
         table.add_row(
             ':link: Gptc Hub URL',
-            f'[link=https://cloud.gptc.ai/executor/{uuid8}/]https://cloud.gptc.ai/executor/{uuid8}/[/link]',
+            f'[link=https://cloud.gpt-computer.github.io/executor/{uuid8}/]https://cloud.gpt-computer.github.io/executor/{uuid8}/[/link]',
         )
 
         if secret:
