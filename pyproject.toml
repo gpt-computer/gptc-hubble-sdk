@@ -19,7 +19,7 @@ dependencies = [
     "docker",
     "pyyaml",
     "python-jose",
-    "setuptools",
+    "setuptools<80",
 ]
 
 [project.scripts]
