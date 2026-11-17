@@ -616,9 +616,10 @@ metas:
         if 'name' in image:
             table.add_row(':name_badge: Name', image['name'])
 
+        hub_url = f'https://cloud.gpt-computer.github.io/executor/{uuid8}/'
         table.add_row(
             ':link: Gptc Hub URL',
-            f'[link=https://cloud.gpt-computer.github.io/executor/{uuid8}/]https://cloud.gpt-computer.github.io/executor/{uuid8}/[/link]',
+            f'[link={hub_url}]{hub_url}[/link]',
         )
 
         if secret:
