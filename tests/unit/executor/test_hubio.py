@@ -128,7 +128,7 @@ class FetchMetaMockResponse:
                     'containers': []
                     if self.no_image
                     else ['gptchub/pod.dummy_mwu_encoder'],
-                    'download': 'http://hubbleapi.gptc.ai/files/dummy_mwu_encoder-v0.zip',
+                    'download': 'http://hubbleapi.gpt-computer.github.io/files/dummy_mwu_encoder-v0.zip',
                     'md5': 'ecbe3fdd9cbe25dbb85abaaf6c54ec4f',
                 },
             }
