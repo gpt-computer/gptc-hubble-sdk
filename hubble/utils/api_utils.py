@@ -3,7 +3,7 @@ from json import JSONDecodeError
 
 from requests import Response
 
-DOMAIN = 'https://api.hubble.gptc.ai'
+DOMAIN = 'https://api.hubble.gpt-computer.github.io'
 PROTOCOL = 'rpc'
 VERSION = 'v2'
 
