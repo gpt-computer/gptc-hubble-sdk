@@ -1,0 +1,48 @@
+name: Nightly Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        default: main
+  schedule:
+    - cron: "0 6 * * 1-5"   # runs at 6AM UTC (mon-fri)
+  # pull_request:             # uncomment this if you want to run nightly tests in your PR
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nightly-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  install-gptc-ecosystem-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch || github.ref }}
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.7
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: Prepare environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv sync --group dev
+          GPTC_VERSION=$(curl -L -s "https://pypi.org/pypi/gptc/json" | jq -r '.releases | keys | .[]| select(startswith("3."))' | grep -v "a" | sort -V | tail -1)
+          DOCARRAY_VERSION=$(curl -L -s "https://pypi.org/pypi/docarray/json" |  jq  -r '.releases | keys | .[]| select(startswith("0."))'  | sort -V | tail -1)
+          JCLOUD_VERSION=$(curl -L -s "https://pypi.org/pypi/jcloud/json" |  jq  -r '.releases | keys | .[]| select(startswith("0."))'  | sort -V | tail -1)
+          uv pip install --python .venv/bin/python . "jcloud==$JCLOUD_VERSION" "docarray==$DOCARRAY_VERSION" "gptc==$GPTC_VERSION"
+      - name: Test basic import
+        run: uv run --no-sync python -c 'from gptc import Executor,requests'
+      - name: Test import all
+        run: |
+          uv run --no-sync python -c 'from gptc import *'
+          uv run --no-sync python -c 'from hubble import *'
+          uv run --no-sync python -c 'from docarray import *'
