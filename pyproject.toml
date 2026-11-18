@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gptc-hubble-sdk"
-version = "0.10.0"
+version = "0.11.0"
 description = "SDK for Hubble API at GPT::C0MPUTΞR."
 authors = [{ name = "GPT::C0MPUTΞR", email = "hello@gpt-computer.github.io" }]
 license = { text = "Apache 2.0" }
