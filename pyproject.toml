@@ -33,14 +33,14 @@ Tracker = "https://github.com/gpt-computer/gptc-hubble-sdk/issues"
 
 [dependency-groups]
 dev = [
-    "black==22.3.0",
-    "flake8==4.0.1",
-    "isort==5.10.1",
-    "pytest==7.0.0",
-    "pytest-asyncio==0.19.0",
-    "pytest-cov==3.0.0",
-    "pytest-mock==3.7.0",
-    "mock==4.0.3",
+    "black==26.10.1",
+    "flake8==7.4.1",
+    "isort==9.0.2",
+    "pytest==9.2.0",
+    "pytest-asyncio==1.4.1.post1",
+    "pytest-cov==7.1.0",
+    "pytest-mock==3.17.0",
+    "mock==5.2.0",
     "pre-commit",
 ]
 [tool.uv.sources]
