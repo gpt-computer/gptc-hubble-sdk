@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gptc-hubble-sdk"
-version = "0.11.0"
+version = "0.10.0"
 description = "SDK for Hubble API at GPT::C0MPUTΞR."
-authors = [{ name = "GPT::C0MPUTΞR", email = "hello@gpt-computer.github.io" }]
+authors = [{ name = "GPT::C0MPUTΞR", email = "info@khulnasoft.com" }]
 license = { text = "Apache 2.0" }
 requires-python = ">=3.7.0"
 dependencies = [
@@ -43,6 +43,8 @@ dev = [
     "mock==4.0.3",
     "pre-commit",
 ]
+[tool.uv.sources]
+gptc = { git = "https://github.com/gpt-computer/serve" }
 
 [tool.black]
 line-length = 88
