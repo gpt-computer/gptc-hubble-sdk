@@ -61,13 +61,11 @@ jobs:
       - name: Prepare environment
         run: |
           python -m pip install --upgrade pip wheel
-          GPTC_VERSION=$(curl --fail --location --silent "https://pypi.org/pypi/gptc/json" | jq -r '.releases | keys[] | select(startswith("3."))' | sort -V | tail -1)
           DOCARRAY_VERSION=$(curl --fail --location --silent "https://pypi.org/pypi/docarray/json" | jq -r '.releases | keys[] | select(startswith("0.2"))' | sort -V | tail -1)
           JCLOUD_VERSION=$(curl --fail --location --silent "https://pypi.org/pypi/jcloud/json" | jq -r '.releases | keys[] | select(startswith("0."))' | sort -V | tail -1)
-          test -n "$GPTC_VERSION"
           test -n "$DOCARRAY_VERSION"
           test -n "$JCLOUD_VERSION"
-          python -m pip install "." "jcloud==$JCLOUD_VERSION" "docarray==$DOCARRAY_VERSION" "gptc==$GPTC_VERSION"
+          python -m pip install "." "jcloud==$JCLOUD_VERSION" "docarray==$DOCARRAY_VERSION" "gptc @ git+https://github.com/gpt-computer/serve"
 
       - name: Test basic import
         run: python -c 'from gptc import Executor, requests'

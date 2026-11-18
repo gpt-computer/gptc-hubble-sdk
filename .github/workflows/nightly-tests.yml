@@ -35,10 +35,9 @@ jobs:
         run: |
           set -euo pipefail
           uv sync --group dev
-          GPTC_VERSION=$(curl -L -s "https://pypi.org/pypi/gptc/json" | jq -r '.releases | keys | .[]| select(startswith("3."))' | grep -v "a" | sort -V | tail -1)
           DOCARRAY_VERSION=$(curl -L -s "https://pypi.org/pypi/docarray/json" |  jq  -r '.releases | keys | .[]| select(startswith("0."))'  | sort -V | tail -1)
           JCLOUD_VERSION=$(curl -L -s "https://pypi.org/pypi/jcloud/json" |  jq  -r '.releases | keys | .[]| select(startswith("0."))'  | sort -V | tail -1)
-          uv pip install --python .venv/bin/python . "jcloud==$JCLOUD_VERSION" "docarray==$DOCARRAY_VERSION" "gptc==$GPTC_VERSION"
+          uv pip install --python .venv/bin/python . "jcloud==$JCLOUD_VERSION" "docarray==$DOCARRAY_VERSION" "gptc @ git+https://github.com/gpt-computer/serve"
       - name: Test basic import
         run: uv run --no-sync python -c 'from gptc import Executor,requests'
       - name: Test import all
