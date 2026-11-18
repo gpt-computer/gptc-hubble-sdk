@@ -44,8 +44,12 @@ jobs:
       - name: Lint with flake8, black and isort
         run: make style
 
-      - name: Run tests
-        run: make test
+      - name: Run unit tests
+        run: uv run pytest tests/unit --show-capture no --full-trace --verbose --cov hubble/ --cov-report term-missing --cov-report xml
+
+      - name: Run integration tests
+        if: env.GPTC_AUTH_TOKEN != ''
+        run: uv run pytest tests/integration --show-capture no --full-trace --verbose --cov hubble/ --cov-report term-missing --cov-report xml --cov-append
         env:
           GPTC_AUTH_TOKEN: ${{ secrets.GPTC_AUTH_TOKEN }}
 
